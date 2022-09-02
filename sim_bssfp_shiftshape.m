@@ -96,6 +96,7 @@ tempm = tempm.*masque;tempa = tempa.*masque;tempb = tempb.*masque;tempr = tempr.
 % cdata = rot90(cdata);% this rotation should make a PE motion artifact issue along y coherently
 
 %% run a motion artifact generator
+% freqs  = 40;    amplitudes = 3;%dfrequency and amplitude used in fig2
 freqs  = [5 10 25 50];    amplitudes = [1 3 15 25];%debug res
 % freqs = [1 5:5:60]; amplitudes = [0 1 2 3:2:27 30];% 30x14med res
 % freqs = 1:2:60; amplitudes = 0:30;% 30x31high res
@@ -123,18 +124,18 @@ for fr = freqs
     end
 end
 %print out a few figures at disparate vals
-selF = [10 50];    selA = [3 25];
-% selF = [5 55];    selA = [3 28];%for 30x31 ampsxfreqs
-% selF = [20 50];    selA = [3 20];
-for ff = 1:length(selF)
-    f_ind = find(freqs == selF(ff));
-    for aa = 1:length(selA)
-        a_ind = find(amplitudes == selA(aa));
-        figure; imagesc(abs(motdata(:,:,f_ind,a_ind)));colormap(gray); axis image
-        title([num2str(selF(ff)),'-Cycled ',num2str(selA(aa)),'-Pixel Motion Noiseless image']);
-        motstr = [num2str(selF(ff)),'Cyc_',num2str(selA(aa)),'Pix_' motdir 'EdirnMotNoiselessIm'];
-    end
-end
+% selF = [10 50];    selA = [3 25];
+% % selF = [5 55];    selA = [3 28];%for 30x31 ampsxfreqs
+% % selF = [20 50];    selA = [3 20];
+% for ff = 1:length(selF)
+%     f_ind = find(freqs == selF(ff));
+%     for aa = 1:length(selA)
+%         a_ind = find(amplitudes == selA(aa));
+%         figure; imagesc(abs(motdata(:,:,f_ind,a_ind)));colormap(gray); axis image
+%         title([num2str(selF(ff)),'-Cycled ',num2str(selA(aa)),'-Pixel Motion Noiseless image']);
+%         motstr = [num2str(selF(ff)),'Cyc_',num2str(selA(aa)),'Pix_' motdir 'EdirnMotNoiselessIm'];
+%     end
+% end
 
 % [PSF, ksp] = simCartesianMRI( 'TR', TR, 'matrix', [nc nr], 'sinYampl', ampl, 'sinYfreq', freq );
 

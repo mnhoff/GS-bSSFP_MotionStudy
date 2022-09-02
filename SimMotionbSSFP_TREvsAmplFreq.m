@@ -34,13 +34,15 @@ if vers == 1 %Fig 4b
     freq = input(' How many motion cycles would you like?  Default is 40 = ');if isempty(freq), freq = 40; end   
     for tt = 1:numparm
         [amat,bmat,mmat,theta,compdata(:,:,:,tt),E1mat,rotmat,noisonly,motdata(:,:,tt),puredata(:,:,:,tt),row1,rowlst,col1,collst,mask] = sim_bssfp_motOneTis(cyc,noisval,T1(tt),T2(tt),th_pts,flipr,1,TR,motdir,freq,amplitude,PEdirn);
+%         kkk = puredata(:,:,:,tt);
+%         max(abs(kkk(:)))
     end
     [nr,nc,npc,numparm] = size(compdata);
 elseif vers == 2 %Fig 4a
     disp('Run a motion simulation at variable noise levels');
     amplitude = input(' How many pixels of motion range would you like?  Default is 3 = ');if isempty(amplitude), amplitude = 3; end
     freq = input(' How many motion cycles would you like?  Default is 40 = ');if isempty(freq), freq = 40; end 
-    noisval = [1 5:5:100]; numparm = length(noisval);
+    noisval = [1 5:5:100]; numparm = length(noisval);col1
     for tt = 1:numparm
         [amat,bmat,mmat,theta,compdata(:,:,:,tt),E1mat,rotmat,noisonly,motdata(:,:,tt),puredata(:,:,:,tt),row1,rowlst,col1,collst,mask] = sim_bssfp_SpecNoisMot(cyc,noisval(tt),th_pts,flipr,1,agran,TR,motdir,freq,amplitude,PEdirn);
     end  

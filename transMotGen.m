@@ -33,20 +33,20 @@ shftKSP = fftshift(ksp);
 %     I0framereturn = ifft2(ksp);%test that I get the same info when I ifft
 
 % Visualize the shifted, FFTed movie frames, and a k-space surface plot 
-figure;
-for tt = 1: nr
-    pause(0.1)
-    im = subplot(1,3,1);imagesc(abs(I0frame(:,:,tt)));colormap(gray); axis image% 
-    title(['Image Mag, Frame # ',num2str(tt),', shift = ',num2str(pos(tt,2))]);
-% im1 = subplot(1,2,2);imagesc(log(abs(shftKSP(:,:,tt))), [0 10]); axis image
-im1 = subplot(1,3,2);imagesc(log(abs(shftKSP(:,:,tt)))); axis image
-colormap(gray)
-title(['K-space Mag, Frame # ',num2str(tt),', shift = ',num2str(pos(tt,2))]);
-im2 = subplot(1,3,3);imagesc(angle(shftKSP(:,:,tt))); axis image
-colormap(gray)
-title(['K-space Phase, Frame # ',num2str(tt)]);
- 
-end
+% % % figure;
+% % % for tt = 1: nr
+% % %     pause(0.1)
+% % %     im = subplot(1,3,1);imagesc(abs(I0frame(:,:,tt)));colormap(gray); axis image% 
+% % %     title(['Image Mag, Frame # ',num2str(tt),', shift = ',num2str(pos(tt,2))]);
+% % % % im1 = subplot(1,2,2);imagesc(log(abs(shftKSP(:,:,tt))), [0 10]); axis image
+% % % im1 = subplot(1,3,2);imagesc(log(abs(shftKSP(:,:,tt)))); axis image
+% % % colormap(gray)
+% % % title(['K-space Mag, Frame # ',num2str(tt),', shift = ',num2str(pos(tt,2))]);
+% % % im2 = subplot(1,3,3);imagesc(angle(shftKSP(:,:,tt))); axis image
+% % % colormap(gray)
+% % % title(['K-space Phase, Frame # ',num2str(tt)]);
+% % %  
+% % % end
 % close
 
 %% (4) Sample 3D {Kx-Ky-t} obliquely as real data would be read

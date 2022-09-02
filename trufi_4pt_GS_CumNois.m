@@ -128,7 +128,7 @@ maxmg = 2700;% maxmg = max(abs(GS(:)));  %set a max for plots to avoid singulari
 
 %% plot parameters
 close all
-lw = 1.5; ptsize = 2; fsize = 17;
+lw = 1.5; ptsize = 1; fsize = 17;
 % since edge bins are sparsely populated, consider dropping from plots
 first = ceil(numbin*0.03);last = floor(numbin*0.99);
 subrange = input('Plot the full radiality range(0), or just the meaningful range (1) = ');
@@ -191,8 +191,13 @@ hold off
 %% pix-by-pix scatterplot of abs(GS/CS) error vs normalized noise radiality 
 typicerror = 230;
 % CS cumulative error plot
-CSnfig = figure(67);scatter(radtotnorm(:),CSerr(:),ptsize,[0.7 0 0],'.');axis equal
+% CSnfig = figure(67);scatter(radtotnorm(:),CSerr(:),ptsize,[0.7 0 0],'.');axis equal
+% xlim([-1 1]);ylim([-typicerror typicerror]); axis square
+
+CSnfig = figure;scatter3(radtotnorm(:),CSerr(:),ptsize,[0.7 0 0],'.');axis equal
 xlim([-1 1]);ylim([-typicerror typicerror]); axis square
+
+
 % title('CS Error vs Normalized Pix-Noise Radiality'); 
 % xlabel('Norm Pixel Noise Radiality \rho','FontWeight','Bold','FontSize',fsize);
 % ylabel({'Complex','Sum','error'},'FontWeight','Bold','FontSize',fsize,'Rotation',0);
